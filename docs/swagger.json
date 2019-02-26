@@ -1,0 +1,70 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Lab 06, where we are learning about building API's",
+    "version": "1.0.0",
+    "title": "Simple API"
+  },
+  "paths": {
+    "/animal_products": {
+      "get": {
+        "description": "Get all animal products",
+        "responses": {
+          "200": {
+            "description": "Returned list of animal products",
+            "schema": {
+              "$ref": "#/definitions/getAll"
+            }
+          }
+        }
+      }
+    },
+    "/animal_products/{id}": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "type": "integer"
+        }
+      ],
+      "get": {
+        "description": "Get selected Animal Product",
+        "responses": {
+          "200": {
+            "description": "Return Animal Product",
+            "schema": {
+              "$ref": "#/definitions/getOne"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "getAll": {
+      "type": "object",
+      "items": {
+        "type": "object",
+        "properties": {}
+      },
+      "example": [
+        {"name": "Animal Product 1", "id": 1},
+        {"name": "Animal Product 2", "id": 2}
+      ]
+    },
+    "getOne": {
+      "type": "object",
+      "items": {
+        "type": "object",
+        "properties": {}
+      },
+      "example": {"name": "Animal Product Name", "id": 1}
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ]
+}
