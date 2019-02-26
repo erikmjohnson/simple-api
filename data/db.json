@@ -1,0 +1,32 @@
+{
+  "categories": [
+    {
+      "_id": 1,
+      "name": "Cats",
+      "display_name": "CATS",
+      "description": "All about cats"
+    },
+    {
+      "_id": 2,
+      "name": "Dogs",
+      "display_name": "DOGS",
+      "description": "All about Dogs"
+    }
+  ],
+  "products": [
+    {
+     "_id": 1,
+      "category": "Cat sharpener",
+      "name": "CatSharp",
+      "display_name": "CatSharp",
+      "description": "Tired of having a dull cat? Sharpen them up with CatSharp!"
+    },
+    {
+      "_id": 2,
+      "category": "Dog Buffers",
+      "name": "Buff Dog",
+      "display_name": "Buff Dog",
+      "description": "Tired of your dog rusting on the furniture? Buff them out with, buff Dog!"
+    }
+  ]
+}
