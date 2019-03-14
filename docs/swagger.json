@@ -1,25 +1,36 @@
 {
   "swagger": "2.0",
   "info": {
-    "description": "Lab 06, where we are learning about building API's",
+    "description": "Lab 06, learning about swagger documentation",
     "version": "1.0.0",
-    "title": "Simple API"
+    "title": "Simple APi"
   },
   "paths": {
-    "/animal_products": {
+    "/animals": {
       "get": {
-        "description": "Get all animal products",
+        "description": "Get all stored animals",
         "responses": {
           "200": {
-            "description": "Returned list of animal products",
+            "description": "Returns a list of animal",
             "schema": {
-              "$ref": "#/definitions/getAll"
+              "$ref": "#/definitions/animals"
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Creates a new animal",
+        "responses": {
+          "200": {
+            "description": "new animal has been created",
+            "schema": {
+              "$ref": "#/definitions/animals"
             }
           }
         }
       }
     },
-    "/animal_products/{id}": {
+    "/animals/:id": {
       "parameters": [
         {
           "in": "path",
@@ -28,13 +39,80 @@
           "type": "integer"
         }
       ],
-      "get": {
-        "description": "Get selected Animal Product",
+      "put": {
+        "description": "Selects one animal by Id, and updates animal",
         "responses": {
           "200": {
-            "description": "Return Animal Product",
+            "description": "animal has been updated",
             "schema": {
-              "$ref": "#/definitions/getOne"
+              "$ref": "#/definitions/animals"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Selects one animal by Id, and deletes it ",
+        "responses": {
+          "200": {
+            "description": "animal is deleted",
+            "schema": {
+              "$ref": "#/definitions/animals"
+            }
+          }
+        }
+      }
+    },
+    "/animal_products": {
+      "get": {
+        "description": "Get all stored animal_products",
+        "responses": {
+          "200": {
+            "description": "Returns a list of animal products",
+            "schema": {
+              "$ref": "#/definitions/animal_products"
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Creates a new animal product",
+        "responses": {
+          "200": {
+            "description": "new animal product has been created",
+            "schema": {
+              "$ref": "#/definitions/animal_products"
+            }
+          }
+        }
+      }
+    },
+    "/animal_products/:id": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "type": "integer"
+        }
+      ],
+      "put": {
+        "description": "Selects one animal product by Id, and updates animal product",
+        "responses": {
+          "200": {
+            "description": "animal product has been updated",
+            "schema": {
+              "$ref": "#/definitions/animal_products"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Selects one animal product by Id, and deletes it ",
+        "responses": {
+          "200": {
+            "description": "animal product is deleted",
+            "schema": {
+              "$ref": "#/definitions/animal_products"
             }
           }
         }
@@ -42,26 +120,48 @@
     }
   },
   "definitions": {
-    "getAll": {
-      "type": "object",
-      "items": {
-        "type": "object",
-        "properties": {}
+    "animals": {
+      "properties" : {
+        "id" : {
+          "type" : "number"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "display_name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        }
       },
       "example": [
-        {"name": "Animal Product 1", "id": 1},
-        {"name": "Animal Product 2", "id": 2}
+        {"_id" :  1, "name" :  "Cats", "display_name" :  "CATS", "description" :  "All about cats"}
       ]
     },
-    "getOne": {
-      "type": "object",
-      "items": {
-        "type": "object",
-        "properties": {}
+    "animal_products": {
+      "properties" : {
+        "id" : {
+          "type" : "number"
+        },
+        "category" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "display_name" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        }
       },
-      "example": {"name": "Animal Product Name", "id": 1}
+      "example": [
+        {"_id" :  1, "category" :  "Cat sharpener", "name" :  "CatSharp", "display_name" :  "CatSharp", "description" :  "Tired of having a dull cat? Sharpen them up with CatSharp!"}
+      ]
     }
-  },
+  },  
   "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
